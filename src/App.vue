@@ -1,27 +1,44 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-container>
+        <el-col :span="24">
+          <div>
+            <HeaderNaw />
+            <el-main class="el-main">
+              <el-button type="info" plain>Balance</el-button>
+              <el-button type="primary" plain @click="showModal">New Adjustment</el-button>
+              <Modal v-show="isModalVisible" @close="closeModal"/>
+            </el-main>
+          </div>
+        </el-col>
+    </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Modal from './components/Modal.vue';
+  import HeaderNaw from './components/HeaderNaw.vue';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    name: 'app',
+    components: {
+      Modal,
+      HeaderNaw,
+    },
+    data () {
+      return {
+        isModalVisible: false,
+      };
+    },
+    methods: {
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }
+    },
+  };
 </script>
 
 <style>
@@ -31,6 +48,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+.el-main {
+  background-color: #C0C4CC;
+}
+
+body {
+  margin: 0px;
+}
+
 </style>
