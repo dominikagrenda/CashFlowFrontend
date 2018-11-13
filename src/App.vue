@@ -5,7 +5,7 @@
           <div>
             <HeaderNaw />
             <el-main class="el-main">
-              <el-button type="info" plain>Balance</el-button>
+              <el-button type="info" plain>Balance {{balance}}</el-button>
               <el-button type="primary" plain @click="showModal">New Adjustment</el-button>
               <Modal v-show="isModalVisible" @close="closeModal"/>
             </el-main>
@@ -16,29 +16,41 @@
 </template>
 
 <script>
-  import Modal from './components/Modal.vue';
-  import HeaderNaw from './components/HeaderNaw.vue';
+import Modal from './components/Modal.vue';
+import HeaderNaw from './components/HeaderNaw.vue';
 
-  export default {
-    name: 'app',
-    components: {
-      Modal,
-      HeaderNaw,
+export default {
+  name: 'app',
+  components: {
+    Modal,
+    HeaderNaw,
+  },
+  data() {
+    return {
+      isModalVisible: false,
+      balance: null,
+    };
+  },
+  mounted() {
+    this.getBalance();
+  },
+  updated() {
+    this.getBalance();
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
     },
-    data () {
-      return {
-        isModalVisible: false,
-      };
+    closeModal() {
+      this.isModalVisible = false;
+      this.getBalance();
     },
-    methods: {
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      }
+    getBalance() {
+      this.$http.get('http://localhost:3000/adjustments')
+                .then(response => (this.balance = response.data.balance));
     },
-  };
+  },
+};
 </script>
 
 <style>
