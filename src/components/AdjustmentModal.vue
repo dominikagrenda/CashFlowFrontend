@@ -19,7 +19,7 @@
 
         <footer class="modal-footer">
           <slot name="footer">
-            <button type="button" class="btn-green" @click="createAdjustment" aria-label="Close modal">Save!</button>
+            <button type="button" class="btn-green" @click="createAdjustment">Save!</button>
           </slot>
         </footer>
       </div>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'modal',
+  name: 'adjustmentmodal',
   data() {
     return {
       radio: 'expense',
