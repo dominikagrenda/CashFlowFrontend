@@ -35,7 +35,6 @@ import BalanceModal from './components/BalanceModal.vue';
 import Nav from './components/Nav.vue';
 import Chart from './components/Chart.vue';
 
-
 export default {
   name: 'app',
   components: {
