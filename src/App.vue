@@ -16,8 +16,10 @@
 </template>
 
 <script>
-import Modal from './components/Modal.vue';
-import HeaderNaw from './components/HeaderNaw.vue';
+import AdjustmentModal from './components/AdjustmentModal.vue';
+import BalanceModal from './components/BalanceModal.vue';
+import Nav from './components/Nav.vue';
+import Chart from './components/Chart.vue';
 
 export default {
   name: 'app',
