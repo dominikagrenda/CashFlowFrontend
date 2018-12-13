@@ -33,7 +33,7 @@
 import AdjustmentModal from './components/AdjustmentModal.vue';
 import BalanceModal from './components/BalanceModal.vue';
 import Nav from './components/Nav.vue';
-import Chart from './components/Chart';
+import Chart from './components/Chart.vue';
 
 export default {
   name: 'app',
